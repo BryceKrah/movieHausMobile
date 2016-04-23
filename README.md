@@ -1,2 +1,11 @@
 # movieHausMobile
-My first react-native app
+My First React-Native App
+
+# Mission Statement:
+  - To provide a fast and easy way to look up movie/tv-show information
+
+# Technologies Used
+  - React-Native
+  - JavaScript
+  - NodeJS
+  - API: OMDB

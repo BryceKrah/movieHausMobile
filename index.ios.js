@@ -1,3 +1,5 @@
+const Main = require('./App/Components/Main');
+
 import React, {
   AppRegistry,
   Component,
@@ -7,8 +9,12 @@ import React, {
   View
 } from 'react-native';
 
-const Main = require('./App/Components/Main');
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#111111',
+  }
+});
 
 class movieHausMobile extends Component {
   render() {
@@ -16,30 +22,12 @@ class movieHausMobile extends Component {
       <NavigatorIOS
         style={styles.container}
         initialRoute={{
-          title: 'Müvie Hâus',
+          title: 'iMōvieHâus',
           component: Main
         }} />
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('movieHausMobile', () => movieHausMobile);

@@ -1,4 +1,6 @@
 const React = require('react-native');
+const api = require('../Utils/app');
+const Dashboard = require('./dashboard')
 
 const {
   View,
@@ -54,14 +56,67 @@ const styles = StyleSheet.create({
 })
 
 class Main extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      title: '',
+      isLoading: false,
+      error: false
+    }
+  }
+
+  handleChange(e){
+    this.setState({
+      name: e.nativeEvent.text
+    })
+  }
+
+  handleResponse(res){
+    console.log("Submit", this.state.name);
+    if(res.Response === 'False'){
+      this.setState({
+        error: 'Movie not found',
+        isLoading: false
+      })
+    } else {
+      this.props.navigator.push({
+        title: res.name || 'Select an Option',
+        component: Dashboard,
+        passProps: {movieInfo: res}
+      });
+      this.setState({
+        isLoading: false,
+        error: false,
+        name: ''
+      });
+    }
+  }
+
+  handleSubmit(){
+    this.setState({
+      isLoading: true,
+    });
+    api.getMovie(this.state.name)
+      .then((jsonRes) => this.handleResponse(jsonRes))
+      .catch((err) => {
+        this.setState({
+          isLoading: false,
+          error: `There was an error: ${err}`
+        })
+      })
+  }
+
   render(){
     return (
       <View style={styles.mainContainer}>
         <Text style={styles.title}> Search by Title </Text>
         <TextInput
-          style={styles.searchInput} />
+          style={styles.searchInput}
+          value={this.state.name}
+          onChange={this.handleChange.bind(this)} />
         <TouchableHighlight
           style={styles.button}
+          onPress={this.handleSubmit.bind(this)}
           underlayColor="white">
             <Text style={styles.buttonText}> SEARCH </Text>
         </TouchableHighlight>

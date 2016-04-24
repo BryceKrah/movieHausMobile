@@ -2,6 +2,7 @@ const React = require('react-native');
 
 const {
   Text,
+  Image,
   StyleSheet,
   View
 } = React;
@@ -12,7 +13,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   image: {
-    height: 350
+    height: 400,
+    width: 350
   },
   buttonText: {
     fontSize: 18,
@@ -25,19 +27,19 @@ class Dashboard extends React.Component{
   render(){
     return (
       <View style={styles.container}>
-        <Text> Title: {Object.values(this.props.movieInfo.Title)} </Text>
-        <Text> Year: {Object.values(this.props.movieInfo.Year)} </Text>
-        <Text> Rated: {Object.values(this.props.movieInfo.Rated)} </Text>
-        <Text> Released: {Object.values(this.props.movieInfo.Released)} </Text>
-        <Text> Genre: {Object.values(this.props.movieInfo.Genre)} </Text>
-        <Text> Director: {Object.values(this.props.movieInfo.Director)} </Text>
-        <Text> Writer: {Object.values(this.props.movieInfo.Writer)} </Text>
-        <Text> Actors: {Object.values(this.props.movieInfo.Actors)} </Text>
-        <Text> Plot: {Object.values(this.props.movieInfo.Plot)} </Text>
-        <Text> Poster: {Object.values(this.props.movieInfo.Poster)} </Text>
-        <Text> Awards: {Object.values(this.props.movieInfo.Awards)} </Text>
-        <Text> Metascore: {Object.values(this.props.movieInfo.Metascore)} </Text>
-        <Text> imdbRating: {Object.values(this.props.movieInfo.imdbRating)} </Text>
+        <Text> Title: {this.props.movieInfo.Title} </Text>
+        <Text> Year: {this.props.movieInfo.Year} </Text>
+        <Text> Rated: {this.props.movieInfo.Rated} </Text>
+        <Text> Released: {this.props.movieInfo.Released} </Text>
+        <Text> Genre: {this.props.movieInfo.Genre} </Text>
+        <Text> Director: {this.props.movieInfo.Director} </Text>
+        <Text> Writer: {this.props.movieInfo.Writer} </Text>
+        <Text> Actors: {this.props.movieInfo.Actors} </Text>
+        <Text> Plot: {this.props.movieInfo.Plot} </Text>
+        <Text> Awards: {this.props.movieInfo.Awards} </Text>
+        <Text> Metascore: {this.props.movieInfo.Metascore} </Text>
+        <Text> imdbRating: {this.props.movieInfo.imdbRating} </Text>
+        <Image style={styles.image} source={{uri: this.props.movieInfo.Poster}} />
       </View>
     )
   }

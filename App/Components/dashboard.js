@@ -10,7 +10,8 @@ const {
 const styles = StyleSheet.create({
   container: {
     marginTop: 65,
-    flex: 1
+    flex: 1,
+    backgroundColor: 'lightgray'
   },
   image: {
     height: 400,
